@@ -1,4 +1,4 @@
-
+-- Declaring a table
 extensions = {}
 
 extensions['Right-Click XSS'] = 'wget "https://addons.mozilla.org/firefox/downloads/file/215802/rightclickxss-0.2.1-fx.xpi" -o /dev/null -O "./.hack-kit/right_click_xss.xpi"'
@@ -33,10 +33,12 @@ extensions['Crypto Fox'] = 'wget "https://addons.mozilla.org/firefox/downloads/f
 
 extensions['Disable WebRTC'] = 'wget "https://addons.mozilla.org/firefox/downloads/latest/497366/addon-497366-latest.xpi" -o /dev/null  -O "./.hack-kit/disable_webrtc.xpi"'
 
+-- Function that returns all plugin names and their download URLs.
 function fetchLinks()
     return extensions
 end
 
+-- Makes the main thread to sleep for some time.
 function sleep(n)
   os.execute("sleep " .. tonumber(n))
 end
