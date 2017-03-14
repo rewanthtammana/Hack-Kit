@@ -52,10 +52,11 @@ end
 split(arg)
 ]]
 
--- Delete the previous instances.
+-- Delete the previous instances of the temporary directory
 err = run('rm -R .hack-kit & 2>/dev/null')
 
 -- Create a temporary directory for saving the data.
+-- This directory contains all the downloaded plugins.
 run('mkdir .hack-kit 2>/dev/null')
 
 -- Checking whether Firefox is installed or not on the users PC.
@@ -110,5 +111,19 @@ print("\n[!] Due to the limitations of the firefox policies this is a semi-autom
 print("[!] Now click install on the small addon icon on the left side of the URL bar for adding it to your firefox.")
 
 print("\n\nEnJoY HaCkIng !!! By Rewanth Cool\n\n")
+
+-- Asking the user permissions for deleting the temporary files created by this tool
+write("Do you want to delete the temporary files created by this tool (y/n) ?")
+local choice = read()
+
+-- Converting the users choice into lowercase
+toLower(choice)
+
+if(choice == 'n') then
+    -- Delete the previous instances of the temp files
+    sleep(0.5)
+    over = run('rm -R .hack-kit & 2>/dev/null')
+    write("Deleted the temporary files successfully !!!")
+end
 
 exit()
