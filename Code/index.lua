@@ -86,7 +86,7 @@ for name, url in pairs(extensions) do
     -- Checking for users choice.
     if ans == 'y' then
         write("\nGreat, downloading " .. name .. ".....\n\n")
-	    run(url)
+        run(url)
     elseif ans == 'n' then
         write("\nSkipping this addon ....\n\n")
     else

@@ -42,7 +42,6 @@ function restart()
     -- Restarting a new instance of firefox.
     sleep(2)
     run(restarting_command)
-    
 end
 
 -- Error Hanlding function : used with xpcall function.
