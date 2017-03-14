@@ -61,6 +61,7 @@ run('mkdir .hack-kit 2>/dev/null')
 
 -- Checking whether Firefox is installed or not on the users PC.
 local firefox = doesExist()
+
 if(firefox == false) then
     print("[!] Quitting firefox is not installed on your linux system\n")
     exit()
@@ -73,7 +74,6 @@ local extensions = fetchLinks()
 
 -- Fetching the plugin name and link of the download URL from the extensions table.
 for name, url in pairs(extensions) do
-
     sleep(0.5)
 
     -- Waiting for user choice.
@@ -85,22 +85,16 @@ for name, url in pairs(extensions) do
 
     -- Checking for users choice.
     if ans == 'y' then
-        
         write("\nGreat, downloading " .. name .. ".....\n\n")
 	    run(url)
-
     elseif ans == 'n' then
-        
         write("\nSkipping this addon ....\n\n")
-    
     else
-    
         write("\nInvalid input, moving to next addon\n\n")
-    
     end
-
 end
 
+-- Sleeping the current thread for a while to add the updates.
 sleep(1)
 
 -- Restarting the firefox for installing the downloaded plugins.
