@@ -119,11 +119,11 @@ local choice = read()
 -- Converting the users choice into lowercase
 toLower(choice)
 
-if(choice == 'n') then
+if(choice == 'y') then
     -- Delete the previous instances of the temp files
     sleep(0.5)
     over = run('rm -R .hack-kit & 2>/dev/null')
-    write("Deleted the temporary files successfully !!!")
+    write("Temporary files deleted successfully !!!")
 end
 
 exit()
