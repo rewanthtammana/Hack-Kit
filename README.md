@@ -17,7 +17,7 @@ Version: 0.1
     cp lua53 /usr/bin
     mv /usr/bin/lua53 /usr/bin/lua
     
-- Lua installed successfully on Linux
+- Lua will be installed on Linux upon executing all the above commands successfully.
 
 ### Execute the commands below and become a hacker
 
@@ -33,4 +33,4 @@ Version: 0.1
 ### Future Perspectives
 * More versions of this tool will be released seasonally depending on the improvements in plugins made by firefox.
 * Interative mode will be released soon.
-* After releasing the interactive mode version, a version for Windows will be released.
+* After releasing the interactive mode version, a version for Windows will also be released.

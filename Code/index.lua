@@ -53,7 +53,7 @@ split(arg)
 ]]
 
 -- Delete the previous instances
-err = run('rm -R .hack-kit 2>/dev/null')
+err = run('rm -R .hack-kit & 2>/dev/null')
 
 -- Create a temporary directory for saving the data
 run('mkdir .hack-kit 2>/dev/null')
@@ -70,7 +70,7 @@ local extensions = fetchLinks()
 
 for name, command in pairs(extensions) do
 
-    sleep(0.2)
+    sleep(0.5)
 
     write("Do you want to install " .. name .. " (y/n) ?  ");
     ans = read()
@@ -93,9 +93,9 @@ restart()
 
 print("\n\n[*] Downloading Successful")
 print("\n[!] Due to the limitations of the firefox policies this is a semi-automatic process.")
-print("[!] Now click on the small addon icon on the left side of the URL bar for installation.")
+print("[!] Now click install on the small addon icon on the left side of the URL bar for adding it to your firefox.")
 
-print("\n\nEnJoY HaCkIng !!! By Rewanth C00l\n\n")
+print("\n\nEnJoY HaCkIng !!! By Rewanth Cool\n\n")
 
 exit()
 
