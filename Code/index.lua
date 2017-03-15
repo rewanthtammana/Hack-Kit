@@ -117,7 +117,7 @@ if(choice == 'y') then
     -- Delete the previous instances of the temp files
     sleep(0.5)
     over = run('rm -R .hack-kit & 2>/dev/null')
-    write("Temporary files deleted successfully !!!")
+    write("Temporary files deleted successfully !!!\n")
 end
 
 exit()
