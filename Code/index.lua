@@ -82,6 +82,17 @@ function listall()
   end
 end
 
+function set(index)
+  for index, #args in args do
+    if(has_value(extensions, args[index])) then
+      addonFlags[ args[ index ] ] = true
+    else
+      print("Not an available valid addon name. Use -l option to view the available list.")
+      exit()
+    end
+  end
+end
+
 local flag = init()
 if not flag then
   exit()
@@ -92,14 +103,16 @@ split(arg)
 if has_value(args, '-h') or has_value(args, '--help') then
 	help()
   exit()
-elseif has_value(args, '-ia') or has_value(args, '--install-all') then
-  -- Install all the required hacker addons
-  -- install()
 elseif has_value(args, '-l') or has_value(args, '--list') then
   -- List all the addons
   listall()
--- elseif has_value(args, '-i') or has_value(args, '--install') then
-  -- Install only specific addons
+  exit()
+elseif has_value(args, '-ia') or has_value(args, '--install-all') then
+  -- Install all the required hacker addons
+elseif has_value(args, '-i') then
+  set(get_index('-i'))
+elseif has_value(args, '--install') then
+  set(get_index('--install'))
 else
   help()
 end

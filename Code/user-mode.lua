@@ -7,6 +7,15 @@ function has_value (tab, val)
     return false
 end
 
+function get_index (tab, val)
+    for index, value in ipairs(tab) do
+        if value == val then
+            return value
+        end
+    end
+end
+
+
 function help ()
 	print("-ia, --install-all : Installs all the hacker addons")
   print("-l, --list : Lists all the addons")
