@@ -2,7 +2,7 @@
     Created by Rewanth Cool (14/03/2017)
     Description:
         This script allows the user to auto-install all the essential addons to the firefox as extensions
-        inorder to turn your browser into a hackers BEAST(Tool). 
+        inorder to turn your browser into a hackers BEAST(Tool).
 ]]
 
 print("\n\nWelcome to Firefox-Hack-Kit\n\n")
@@ -22,6 +22,7 @@ print("\nBy REWANTH COOL\n\n")
 
 require 'firefox'
 require 'global'
+require 'user-mode'
 
 -- Including the dependencies.
 local os = require "os"
@@ -41,56 +42,78 @@ local exit = os.exit
 -- Acquiring the required functions from string module.
 local toLower = string.lower
 
--- This section will be used for interactive mode.
---[[
+args = {}
+
 function split(...)
-    for i, v in pairs(...) do
-        print(v)
-    end
+	for i, v in pairs(...) do
+		args[i] = v
+	end
+end
+
+function init()
+  -- Fetching the plugin list from the table.
+  extensions = fetchLinks()
+  addonFlags = {}
+
+  for name, _ in pairs(extensions) do
+    addonFlags[name] = false
+  end
+
+  -- Delete the previous instances of the temporary directory
+  err = run('rm -R .hack-kit & 2>/dev/null')
+
+  -- Create a temporary directory for saving the data.
+  -- This directory contains all the downloaded plugins.
+  run('mkdir .hack-kit 2>/dev/null')
+
+  -- Checking whether Firefox is installed or not on the users PC.
+  local firefox = doesExist()
+
+  if(firefox == false) then
+      print("[!] Quitting firefox is not installed on your linux system\n")
+      return false
+  end
+  return true
+end
+
+function listall()
+  for name, _ in pairs(extensions) do
+    print(name)
+  end
+end
+
+local flag = init()
+if not flag then
+  exit()
 end
 
 split(arg)
-]]
 
--- Delete the previous instances of the temporary directory
-err = run('rm -R .hack-kit & 2>/dev/null')
-
--- Create a temporary directory for saving the data.
--- This directory contains all the downloaded plugins.
-run('mkdir .hack-kit 2>/dev/null')
-
--- Checking whether Firefox is installed or not on the users PC.
-local firefox = doesExist()
-
-if(firefox == false) then
-    print("[!] Quitting firefox is not installed on your linux system\n")
-    exit()
+if has_value(args, '-h') or has_value(args, '--help') then
+	help()
+  exit()
+elseif has_value(args, '-ia') or has_value(args, '--install-all') then
+  -- Install all the required hacker addons
+  -- install()
+elseif has_value(args, '-l') or has_value(args, '--list') then
+  -- List all the addons
+  listall()
+-- elseif has_value(args, '-i') or has_value(args, '--install') then
+  -- Install only specific addons
+else
+  help()
 end
 
-print("Lets start installing all the hacker addons now ...")
 
--- Fetching the plugin list from the table.
-local extensions = fetchLinks()
+print("Lets start installing all the hacker addons now ...")
 
 -- Fetching the plugin name and link of the download URL from the extensions table.
 for name, url in pairs(extensions) do
     sleep(0.5)
 
-    -- Waiting for user choice.
-    write("Do you want to install " .. name .. " (y/n) ?  ")
-    ans = read()
-    
-    -- Convert the user input into lowercase.
-    toLower(ans)
-
-    -- Checking for users choice.
-    if ans == 'y' then
+    if(addonFlags[name]) then
         write("\nGreat, downloading " .. name .. ".....\n\n")
         run(url)
-    elseif ans == 'n' then
-        write("\nSkipping this addon ....\n\n")
-    else
-        write("\nInvalid input, moving to next addon\n\n")
     end
 end
 
@@ -106,18 +129,9 @@ print("[!] Now click install on the small addon icon on the left side of the URL
 
 print("\n\nEnJoY HaCkIng !!! By Rewanth Cool\n\n")
 
--- Asking the user permissions for deleting the temporary files created by this tool
-write("Do you want to delete the temporary files created by this tool (y/n) ?")
-local choice = read()
+sleep(0.5)
 
--- Converting the users choice into lowercase
-toLower(choice)
-
-if(choice == 'y') then
-    -- Delete the previous instances of the temp files
-    sleep(0.5)
-    over = run('rm -R .hack-kit & 2>/dev/null')
-    write("Temporary files deleted successfully !!!\n")
-end
+-- Removing all temporary files
+run('rm -R .hack-kit & 2>/dev/null')
 
 exit()
