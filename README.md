@@ -12,8 +12,8 @@ Version: 0.1
 
 ### Installing Lua on Linux
 
-    wget http://sourceforge.net/projects/luabinaries/files/5.3.3/Linux%20Libraries/lua-5.3.3_Linux319_64_lib.tar.gz/
-    tar xvzf lua-5.3.3_Linux319_64_lib.tar.gz
+    wget https://nchc.dl.sourceforge.net/project/luabinaries/5.3.3/Tools%20Executables/lua-5.3.3_Linux319_64_bin.tar.gz
+    tar xvzf lua-5.3.3_Linux319_64_bin.tar.gz
     cp lua53 /usr/bin
     mv /usr/bin/lua53 /usr/bin/lua
     
