@@ -15,7 +15,7 @@ print("    |        | |         | |          |\\                |\\          |  
 print("    |        | |         | |          | \\               | \\         |            |      ")
 print("    |        | |         | |_________ |  \\              |  \\   _____|_____       |      ")
 
-print("\n\nVersion: 0.1")
+print("\n\nVersion: 0.2")
 print("\nBy REWANTH COOL\n\n")
 
 -- Due to the limitations of the firefox policies this is a semi-automatic process, after downloading all the addons the user have to click on install manually.
@@ -82,22 +82,25 @@ function listall()
   end
 end
 
-function set(index)
-  for index, #args in args do
+function install(index)
+  print(index)
+  print(#args)
+  --[[for index,#args in args do
     if(has_value(extensions, args[index])) then
       addonFlags[ args[ index ] ] = true
     else
       print("Not an available valid addon name. Use -l option to view the available list.")
       exit()
     end
-  end
+  end]]
+  exit()
 end
-
+--[[
 local flag = init()
 if not flag then
   exit()
 end
-
+]]
 split(arg)
 
 if has_value(args, '-h') or has_value(args, '--help') then
@@ -110,11 +113,12 @@ elseif has_value(args, '-l') or has_value(args, '--list') then
 elseif has_value(args, '-ia') or has_value(args, '--install-all') then
   -- Install all the required hacker addons
 elseif has_value(args, '-i') then
-  set(get_index('-i'))
+  install(get_index(args, '-i'))
 elseif has_value(args, '--install') then
-  set(get_index('--install'))
+  install(get_index(args, '--install'))
 else
   help()
+  exit()
 end
 
 

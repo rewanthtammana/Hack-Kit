@@ -10,7 +10,7 @@ end
 function get_index (tab, val)
     for index, value in ipairs(tab) do
         if value == val then
-            return value
+            return index
         end
     end
 end
